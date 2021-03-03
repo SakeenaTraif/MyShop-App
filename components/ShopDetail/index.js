@@ -4,7 +4,7 @@ import { Card, CardItem, Text, Left, Body } from "native-base";
 import { useSelector } from "react-redux";
 import ProductList from "../ProductList";
 
-const ShopDetail = ({ route }) => {
+const ShopDetail = ({ navigation, route }) => {
   const allProducts = useSelector((state) => state.productReducer.products);
   // const shop = useSelector((state) => state.shopReducer.shops[0]);
   const {shop} = route.params;
@@ -29,7 +29,7 @@ const ShopDetail = ({ route }) => {
           />
         </CardItem>
       </Card>
-      <ProductList products={products} />
+      <ProductList products={products} navigation={navigation} />
     </View>
   );
 };

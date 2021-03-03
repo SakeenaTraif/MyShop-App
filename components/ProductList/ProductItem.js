@@ -2,9 +2,9 @@ import React from "react";
 import { ListItem } from "native-base";
 import { ShopItemStyled } from "../ShopList/style";
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ navigation, product }) => {
   return (
-    <ListItem>
+    <ListItem onPress={() => navigation.navigate(("ProductDetail"), {product}) }>
       <ShopItemStyled>{product.name}</ShopItemStyled>
     </ListItem>
   );
