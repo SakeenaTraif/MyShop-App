@@ -10,6 +10,8 @@ import Home from "../Home";
 import ShopList from "../ShopList";
 import ShopDetail from "../ShopDetail";
 import ProductDetail from "../ProductDetail";
+import CartButton from '../buttons/CartButton';
+import CartList from "../CartList";
 
 const navTheme = DefaultTheme;
 navTheme.colors.background = '#f7e9eb';
@@ -23,17 +25,25 @@ const RootNavigator = () =>{
                    options={{headerShown: false}} />
 
                 <Screen name="ShopList" component={ShopList} 
-                options={{headerStyle: {backgroundColor: "#ffc6d0"}}} />
+                options={{
+                    title:"Choose your Shop",
+                    headerStyle: {backgroundColor: "#ffc6d0"},
+                    headerRight:() => <CartButton/> }}/>
+
                 <Screen name="ShopDetail" component={ShopDetail}
                 options = {({route}) => { 
                     return { title: route.params.shop.name,
+                             headerRight:() => <CartButton/>
                     };
                     }} />
                 <Screen name="ProductDetail" component={ProductDetail}
                 options = {({route}) => { 
-                    return { title: route.params.product.name,
+                    return { title: route.params.product.name, 
+                            headerRight:() => <CartButton/>
                     };
                     }} />
+
+                <Screen name="CartList" component={CartList} />    
                 </Navigator>
             </NavigationContainer>
         );
